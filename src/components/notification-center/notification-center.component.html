@@ -3,7 +3,7 @@
     <div class="notification-toast" [class]="'toast-' + toast.type" role="alert">
       <div class="flex-shrink-0 pt-0.5">
         @if (toast.appIcon.startsWith('data:image')) {
-          <img [src]="toast.appIcon" [alt]="toast.title" class="w-6 h-6 object-contain">
+          <div class="w-6 h-6 bg-contain bg-no-repeat bg-center" [style.background-image]="'url(' + toast.appIcon + ')'"></div>
         } @else {
           <i class="text-xl" [class]="toast.appIcon"></i>
         }

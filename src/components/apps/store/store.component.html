@@ -12,7 +12,7 @@
           @for (app of category[1]; track app.id) {
             <div class="bg-gray-800/60 p-4 rounded-lg flex flex-col items-center text-center transition-all duration-300 hover:bg-gray-700/80 hover:-translate-y-1">
               @if (app.icon.startsWith('data:image')) {
-                <img [src]="app.icon" [alt]="app.title" class="w-12 h-12 mb-4 object-contain">
+                <div class="w-12 h-12 mb-4 bg-contain bg-no-repeat bg-center" [style.background-image]="'url(' + app.icon + ')'"></div>
               } @else {
                 <i class="text-5xl mb-4" [ngClass]="app.icon"></i>
               }

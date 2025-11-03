@@ -4,7 +4,7 @@
      class="flex-shrink-0 h-10 px-3 py-2 flex justify-between items-center cursor-move backdrop-blur-md border-b border-gray-700/50 transition-colors">
   <div class="flex items-center gap-2 overflow-hidden">
     @if (window().icon.startsWith('data:image')) {
-      <img [src]="window().icon" [alt]="window().title" class="w-5 h-5 object-contain flex-shrink-0">
+      <div class="w-5 h-5 bg-contain bg-no-repeat bg-center flex-shrink-0" [style.background-image]="'url(' + window().icon + ')'"></div>
     } @else {
       <i class="app-icon text-lg" [ngClass]="window().icon"></i>
     }
