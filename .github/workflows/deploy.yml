@@ -2,7 +2,7 @@
 name: Build and Deploy Angular App to GitHub Pages
 
 on:
-  # main ব্রাঞ্চে কোড পুশ করা হলে এটি রান হবে
+  # 'main' ব্রাঞ্চে কোড পুশ করা হলে এটি রান হবে
   push:
     branches:
       - main
@@ -32,25 +32,21 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20" # একটি উপযুক্ত Node.js ভার্সন ব্যবহার করুন
+          node-version: "20"
           cache: 'npm'
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build project
+      - name: Build project for GitHub Pages
+        # খুবই গুরুত্বপূর্ণ: '<repository-name>' এর জায়গায় আপনার GitHub রিপোজিটরির নাম দিন।
+        # উদাহরণ: /banana-os/
         run: npm run build -- --base-href /<repository-name>/
-        # দ্রষ্টব্য: <repository-name> এর জায়গায় আপনার GitHub রিপোজিটরির নাম দিন।
-        # উদাহরণ: /my-banana-os-project/
 
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
+      - name: Upload artifact for deployment
         uses: actions/upload-pages-artifact@v3
         with:
-          # বিল্ড আউটপুট ফোল্ডারের পাথ দিন।
-          # এটি সাধারণত 'dist/your-project-name' হয়।
+          # অ্যাঙ্গুলার বিল্ডের আউটপুট ফোল্ডার
           path: './dist/banana-os'
 
   # ডেপ্লয় জব: বিল্ড করা ফাইলগুলো হোস্ট করা হবে
