@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-beasties-container>
+<head><base href="/bananaos/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Banana OS</title>
+  <link rel="icon" type="image/svg+xml" href="src/logo.svg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0f172a">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    :root {
+      --accent-color-blue: #3b82f6;
+      --accent-color-green: #22c55e;
+      --accent-color-red: #ef4444;
+      --accent-color-purple: #8b5cf6;
+      --accent-color-yellow: #eab308;
+      --accent-color-pink: #ec4899;
+      --accent-color: var(--accent-color-blue);
+    }
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background 0.5s ease-in-out;
+    }
+    .wallpaper-default {
+      background: #0f172a;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    }
+    .wallpaper-aurora {
+      background-color: #000000;
+      background-image: radial-gradient(ellipse at 75% 25%, hsla(215, 90%, 55%, 0.4) 0%, transparent 50%),
+                        radial-gradient(ellipse at 25% 35%, hsla(180, 95%, 60%, 0.4) 0%, transparent 50%),
+                        radial-gradient(ellipse at 50% 90%, hsla(300, 95%, 60%, 0.4) 0%, transparent 50%);
+    }
+    .wallpaper-sunset {
+      background: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+    }
+    .wallpaper-galaxy {
+      background: #232526;
+      background: linear-gradient(to right, #414345, #232526);
+    }
+    .accent-bg { background-color: var(--accent-color); }
+    .accent-text { color: var(--accent-color); }
+    .accent-border { border-color: var(--accent-color); }
+    .accent-ring-focus:focus {
+        --tw-ring-color: var(--accent-color);
+    }
+    /* Custom scrollbar for webkit browsers */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.1); }
+    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.3); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.5); }
+
+    /* Power Modes */
+    body.power-mode-performance * {
+      transition-duration: 0.1s !important;
+    }
+    body.power-mode-saving * {
+      transition-duration: 0.8s !important;
+    }
+
+    /* Lock Screen Shake Animation */
+    @keyframes shake {
+      10%, 90% { transform: translate3d(-1px, 0, 0); }
+      20%, 80% { transform: translate3d(2px, 0, 0); }
+      30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+      40%, 60% { transform: translate3d(4px, 0, 0); }
+    }
+    .shake {
+      animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "rxjs": "https://aistudiocdn.com/rxjs@^7.8.2?conditions=es2015",
+    "rxjs/operators": "https://aistudiocdn.com/rxjs@^7.8.2/operators?conditions=es2015",
+    "rxjs/ajax": "https://aistudiocdn.com/rxjs@^7.8.2/ajax?conditions=es2015",
+    "rxjs/webSocket": "https://aistudiocdn.com/rxjs@^7.8.2/webSocket?conditions=es2015",
+    "rxjs/testing": "https://aistudiocdn.com/rxjs@^7.8.2/testing?conditions=es2015",
+    "rxjs/fetch": "https://aistudiocdn.com/rxjs@^7.8.2/fetch?conditions=es2015",
+    "@angular/compiler": "https://next.esm.sh/@angular/compiler@^20.3.6?external=rxjs",
+    "@angular/platform-browser": "https://next.esm.sh/@angular/platform-browser@^20.3.6?external=rxjs",
+    "@angular/core": "https://next.esm.sh/@angular/core@^20.3.6?external=rxjs",
+    "@angular/common/http": "https://next.esm.sh/@angular/common@^20.3.6/http?external=rxjs",
+    "@angular/common": "https://next.esm.sh/@angular/common@^20.3.6?external=rxjs",
+    "@angular/forms": "https://next.esm.sh/@angular/forms@^20.3.6?external=rxjs",
+    "@google/genai": "https://esm.sh/@google/genai",
+    "@angular/core/rxjs-interop": "https://next.esm.sh/@angular/core@^20.3.7/rxjs-interop?external=rxjs"
+  }
+}
+</script>
+</head>
+<body class="wallpaper-default">
+  <app-root></app-root>
+  <script type="module" src="index.tsx"></script>
+<script src="main-5J42YVVQ.js" type="module"></script></body>
+</html>
