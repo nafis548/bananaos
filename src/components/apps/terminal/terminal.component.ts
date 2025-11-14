@@ -354,7 +354,25 @@ Theme: Dark
           const openPath = this.resolvePath(args[0]);
           const nodeToOpen = this.fsService.getNode(openPath);
           if (nodeToOpen) {
-            this.osInteraction.openFileRequest.next(nodeToOpen);
+            if (nodeToOpen.type === 'directory') {
+              this.osInteraction.openAppRequest.next({ appId: 'file-explorer', data: { path: nodeToOpen.path } });
+            } else {
+              const extension = nodeToOpen.name.split('.').pop()?.toLowerCase();
+              let appId: string | null = null;
+              switch(extension) {
+                case 'txt': case 'md': case 'js': case 'ts': case 'json': case 'html': case 'css':
+                  appId = 'text-editor';
+                  break;
+                case 'jpg': case 'jpeg': case 'png': case 'gif':
+                  appId = 'photo-viewer';
+                  break;
+              }
+              if (appId) {
+                this.osInteraction.openAppRequest.next({ appId, data: { filePath: nodeToOpen.path } });
+              } else {
+                return `<span class="text-red-400">open: File type ".${extension}" is not supported.</span>`;
+              }
+            }
           } else {
             this.osInteraction.openAppRequest.next({ appId: args[0] });
           }

@@ -339,8 +339,8 @@ If the user asks a question that doesn't require an action, just answer naturall
             
             let lastConfirmation = '';
             actions.forEach((action: CopilotAction | InAppAction) => {
-                if ('payload' in action) this.osInteraction.inAppActionRequest.next(action);
-                else this.osInteraction.copilotActionRequest.next(action);
+                if ('payload' in action) this.osInteraction.inAppActionRequest.next(action as InAppAction);
+                else this.osInteraction.copilotActionRequest.next(action as CopilotAction);
                 lastConfirmation = this.getConfirmationMessage(action);
             });
             if (!confirmationMessage) confirmationMessage = lastConfirmation;

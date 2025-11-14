@@ -412,4 +412,17 @@ export class FileSystemService {
       return corruptedFs;
     });
   }
+
+  normalizePath(path: string): string {
+    const parts = path.split('/').filter(p => p);
+    const newParts: string[] = [];
+    for (const part of parts) {
+      if (part === '..') {
+        newParts.pop();
+      } else if (part !== '.') {
+        newParts.push(part);
+      }
+    }
+    return '/' + newParts.join('/');
+  }
 }
